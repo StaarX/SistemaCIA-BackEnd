@@ -7,7 +7,7 @@ const morgan=require('morgan');
 const indexRoutes=require('./routes/index');
 
 //configuraciones
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 //middlewares
 app.use(morgan('dev'));

@@ -144,7 +144,7 @@ router.get('/obtenerEstudiante/:id', async (req, res) => {
         }
     });
     if (rs == "NO") {
-        res.status(404).json('No se encontró al alumno');
+        res.status(404).json();
     }
 });
 //MAESTROS jeje
@@ -160,7 +160,7 @@ router.get('/obtenerMaestro/:id', async (req, res) => {
         }
     });
     if (rs == "NO") {
-        res.status(404).json('No se encontró al maestro');
+        res.status(404).json({message:'No se encontró al maestro'});
     }
 });
 //CLASES
@@ -181,7 +181,7 @@ router.get('/obtenerClasesXMaestro/:id', async (req, res) => {
         res.status(200).json(clasese);
         
     }else{
-        res.status(404).json('No se encontraron las clases del Maestro.');
+        res.status(404).json({message:'No se encontraron las clases del Maestro.'});
     }
     });
 router.get('/obtenerClasesXAlumno/:id', async (req, res) => {
@@ -199,7 +199,7 @@ router.get('/obtenerClasesXAlumno/:id', async (req, res) => {
         res.status(200).json(clasese);
         
     }else{
-        res.status(404).json('No se encontraron las clases del Alumno.');
+        res.status(404).json({message:'No se encontraron las clases del Alumno.'});
     }
 });  
 module.exports = router;
