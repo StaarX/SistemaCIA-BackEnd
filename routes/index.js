@@ -3,15 +3,17 @@ const router = express.Router();
 var clase1 = {
     id: "MEA13",
     nombre: "Métodos Ágiles",
-    horario: "11:30 - 13:00",
-    dias: "Martes,Jueves",
+    horarioinicio: "11:30:00",
+    horariofin:"13:00:00",
+    dias: "Lunes,Jueves",
     maestro: "MA1",
     alumnosins:["A1","A2","A3","A4","A14","A13","A12","A11"]
 }
 var clase2 = {
     id: "AW12",
     nombre: "Aplicaciones Web",
-    horario: "10:00 - 11:30",
+    horarioinicio:"10:00:00",
+    horariofin:"11:30:00",
     dias: "Martes,Jueves",
     maestro: "MA3",
     alumnosins:["A1","A2","A3","A4","A14","A13","A12","A11"]
@@ -19,7 +21,8 @@ var clase2 = {
 var clase3 = {
     id: "PRR11",
     nombre: "Programación 2",
-    horario: "8:30 - 11:30",
+    horarioinicio: "8:30:00",
+    horariofin:"11:30:00",
     dias: "Martes,Jueves",
     maestro: "MA2",
     alumnosins: ["A5","A6","A7","A8","A9","A10"]
@@ -184,6 +187,20 @@ router.get('/obtenerClasesXMaestro/:id', async (req, res) => {
         res.status(404).json({message:'No se encontraron las clases del Maestro.'});
     }
     });
+
+    router.get('/obtenerClase/:id', async (req, res) => {
+        var rs = "NO";
+        clases.forEach(element => {
+            if (element.id == req.params.id) {
+                res.status(200).json(element);
+                rs = "SI";
+            }
+        });
+        if (rs == "NO") {
+            res.status(404).json();
+        }
+    });
+
 router.get('/obtenerClasesXAlumno/:id', async (req, res) => {
     var clasese=[]
     var rs = "NO";
