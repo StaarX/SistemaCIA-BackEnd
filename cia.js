@@ -11,7 +11,7 @@ app.set('port', process.env.PORT || 3001);
 
 //middlewares
 app.use(morgan('dev'));
-app.use(express.urlencoded({extended:false}));
+app.use(express.json());
 
 //rutas
 app.use('/',indexRoutes);

@@ -219,4 +219,22 @@ router.get('/obtenerClasesXAlumno/:id', async (req, res) => {
         res.status(404).json({message:'No se encontraron las clases del Alumno.'});
     }
 });  
+router.post('/obtenerAlumnosXClase', async(req, res)=>{
+    var datos= req.body.msg.split(",");
+    var devuelta=[];
+    var rs=false;
+    estudiantes.forEach(element =>{
+        datos.forEach(elemento=>{
+            if (element.id==elemento) {
+             devuelta.push(element);
+             rs=true;
+            }
+        });
+       });
+    if (rs) {
+        res.status(200).json(devuelta);
+    }else{
+        res.status(404).json({message:'No se encontraron alumnos con esos ids'});
+    }
+})
 module.exports = router;
